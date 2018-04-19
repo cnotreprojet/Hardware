@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,9 +41,20 @@ Ou voulant monter eux même le PC
 
 		<p> Convaincu ? Alors n'hésitait plus et foncer ! </p>
 	
-<h2>Dernier produit ajoute </h2>
+
 <?php
-	echo "beaucoup de SQL et PHP a venir <br/>" ;
+	echo "<h2>Dernier produit ajoute </h2>";
+	$connexion = mysqli_connect("localhost", "root","","Hardare");
+	$fichier = fopen('id.txt','a+');
+	$id = fgets($fichier);
+	fclose($fichier);
+	// On affiche les trois dernier produits ajouter en se servant de leur id
+	$requete = SELECT * FROM produit WHERE id >= ($id-3);
+	$res = mysqli_query($connexiion, $requete);
+	while($produit = mysqli_fetch_array($res)) {
+		echo "$produit['nom'] $produit['prix'] <br>";
+	}
+	mysqli_close($connexion);
 ?>
 
 </div>
