@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,8 +27,10 @@
 		</ul>
 	</li>
 	<li class="menu-html"> <a href="conseil.php" > Conseil </a>
-	
-	<li class="menu-html"><a href="acceuil.html" > Achat </a> </li>
+	<?php
+	if($_SESSION['connection'] == 1) {	 	
+		echo "<li class="menu-html"><a href="achat.php" > Achat </a> </li>";
+	}
 	<li class="menu-html" ><a href="Vente.php" > Vente </a></li>
 	<li class="menu-html"><a href="connexion.php" > Connexion </a> </li>
 	<li class="menu-html"><a href="inscription.php" > inscription </a> </li> 
