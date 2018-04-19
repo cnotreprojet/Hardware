@@ -4,6 +4,8 @@ travail restant :
 - Utilisation de variable globale pour la connection, et l'affichage des pages achat et vente
 - Critére de recherche pour la partie vente : trier par prix, date etc
 - Génération de page html pour chaque annonce avec plus de spécification et le contact de la personne ayant poster l'annonce
+- Créer de nouvelle annonces, peut-etre inserer un systeme de catégorie en fonctiont du hardware (disque dur , carte mére etc)
+- Modifier nav.php y inserer le titre du site avec une police télécharger
 
 Si on a le temps : 
 - generation de mot de passe avec fonction de hachage
