@@ -11,3 +11,4 @@ Si on a le temps :
 - generation de mot de passe avec fonction de hachage
 - completer la page de conseil
 - améliorer l'esthetique générale du site, ainsi que l'affichage du livre d'or
+- Essayer d'inserer des images pour les annonces
