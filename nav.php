@@ -27,7 +27,8 @@
 	
 	<li class="menu-html"><a href="acceuil.html" > Achat </a> </li>
 	<li class="menu-html" ><a href="Vente.php" > Vente </a></li>
-	<li class="menu-html"><a href="connexion.php" > Connexion </a> </li>	
+	<li class="menu-html"><a href="connexion.php" > Connexion </a> </li>
+	<li class="menu-html"><a href="inscription.php" > inscription </a> </li> 
 </ul>
 </nav>
 </body>
