@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,6 +31,7 @@ $connexion = mysqli_connect("localhost","root","","hardware");
 	echo $res;
 	$result = mysqli_query($connexion,$res);
 	echo $result->num_rows;
+	$_SESSION['connection'] = 1;
 ?>
 </div>
 <?php include('footer.html') ?>
