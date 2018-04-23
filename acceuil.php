@@ -1,19 +1,24 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="Style/style.css" />
-	<title></title>
+	<title>Hard...Where ? </title>
 </head>
 <body>
 <!--<img src="Style/img/GIFhumour.gif" alt="img_Minitel" id="logo">-->
 <?php include ('nav.php'); ?>	
 
 <div class="conteneur">
-<h2> Bienvenue... </h2>
+<?php 
+if(!empty($_SESSION['connection'])){
+	$prenom = $_SESSION['prenom'];
+	echo "<h2> Heureux de vous revoir $prenom</h2>";
+}
+else{
+	echo "<h2> Bienvenue ... </h2>";
+}
+?>
 L'informatique est d'une complexité infinie c'est ce qui en fait une chose passionnante <br/>
 Ce site est une (modeste) aide aux esprit curieux en quéte d'information, de conseil ,matériel
 Ou voulant monter eux même le PC 
@@ -41,20 +46,31 @@ Ou voulant monter eux même le PC
 
 		<p> Convaincu ? Alors n'hésitait plus et foncer ! </p>
 	
-
+<h2>Dernier produit ajoute </h2>
 <?php
-	echo "<h2>Dernier produit ajoute </h2>";
-	$connexion = mysqli_connect("localhost", "root","","Hardare");
-	$fichier = fopen('id.txt','a+');
+	$connexion = mysqli_connect("localhost","root","","hardware");
+		if(mysqli_connect_error()){
+			printf("Echec de la connection : %s \n",mysqli_connect_error());
+			exit(); 
+		}
+
+	$fichier = fopen('id.txt', 'r');
+	fseek($fichier, 0);
 	$id = fgets($fichier);
 	fclose($fichier);
-	// On affiche les trois dernier produits ajouter en se servant de leur id
-	$requete = SELECT * FROM produit WHERE id >= ($id-3);
-	$res = mysqli_query($connexiion, $requete);
-	while($produit = mysqli_fetch_array($res)) {
-		echo "$produit['nom'] $produit['prix'] <br>";
+	echo "$id";
+
+	$requete = "SELECT * FROM produit WHERE id > $id-3";
+	$res = mysqli_query($connexion,$requete);
+	while($produit = mysqli_fetch_array($res,MYSQLI_BOTH)){
+		//echo"{$produit['id']} <br>";
+		echo "<hr/>";
+		//echo"{$produit['name']} <br>";
+		echo"{$produit['titre']} ";
+		//echo"{$produit['description']} <br>";
+		echo"{$produit['prix']}$ <br>";
 	}
-	mysqli_close($connexion);
+	//mysqli_close();
 ?>
 
 </div>
